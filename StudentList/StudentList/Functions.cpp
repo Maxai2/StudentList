@@ -74,6 +74,18 @@ void Print(char **arr, int size)
 		delimetr(size * 2 + 1);
 		SetConsoleTextAttribute(h, defaultColor);
 	}
+
+	//SetConsoleCursorPosition(h, { 1, 2 });
+	//cout << "1. " << "Ali";
+	//SetConsoleTextAttribute(h, menuColor);
+	//delimetr(3);
+	//SetConsoleTextAttribute(h, defaultColor);
+
+	//SetConsoleCursorPosition(h, { 1, 4 });
+	//cout << "2. " << "Aliiiiii";
+	//SetConsoleTextAttribute(h, menuColor);
+	//delimetr(5);
+	//SetConsoleTextAttribute(h, defaultColor);
 }
 
 void Sort(char **arr, int size)
