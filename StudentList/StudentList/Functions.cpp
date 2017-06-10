@@ -65,27 +65,18 @@ char **AddStudents(char **arr, int &size)
 
 void Print(char **arr, int size)
 {
-	short temp = size;
+	short temp = 1;
 	for (short i = 0; i < size; i++)
 	{
+		SetConsoleCursorPosition(h, { 1, temp * 2 });
+		cout << "\t\t\t\t\t\t";
 		SetConsoleCursorPosition(h, { 1, temp * 2 });
 		cout << i + 1 << ". " << arr[i];
 		SetConsoleTextAttribute(h, menuColor);
 		delimetr(size * 2 + 1);
 		SetConsoleTextAttribute(h, defaultColor);
+		temp++;
 	}
-
-	//SetConsoleCursorPosition(h, { 1, 2 });
-	//cout << "1. " << "Ali";
-	//SetConsoleTextAttribute(h, menuColor);
-	//delimetr(3);
-	//SetConsoleTextAttribute(h, defaultColor);
-
-	//SetConsoleCursorPosition(h, { 1, 4 });
-	//cout << "2. " << "Aliiiiii";
-	//SetConsoleTextAttribute(h, menuColor);
-	//delimetr(5);
-	//SetConsoleTextAttribute(h, defaultColor);
 }
 
 void Sort(char **arr, int size)
@@ -95,19 +86,25 @@ void Sort(char **arr, int size)
 		Print(arr, size);
 	else
 	{
-		for (int i = 1; i < size; i++)
+		for (int i = 0; i < size; i++)
 		{
-			for (int j = 0; arr[i][j] != '\0'; j++)
+			for (int j = 0; arr[i + 1][j] != '\0'; j++)
 			{
-				if (arr[i][j] < arr[i - 1][j])
+				if (arr[i][j] > arr[i + 1][j])
 				{
-					temp = arr[i];
-					arr[i] = arr[i - 1];
-					arr[i - 1] = temp;
+					temp = arr[i + 1];
+					arr[i + 1] = arr[i];
+					arr[i] = temp;
+					i = size;
 					break;
 				}
+				else if (arr[i][j] < arr[i + 1][j])
+				{
+					i = size;
+					break;
+				}
+				
 			}
-//			arr[i - 1][len(arr, i) - 1] = '\0';
 		}
 				
 		Print(arr, size);
