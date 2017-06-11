@@ -177,7 +177,6 @@ char **RemoveStudent(char **arr, int &size)
 	}
 	size--;
 	return arr;
-
 }
 
 char **EditStudent(char **arr, int size)
@@ -196,7 +195,11 @@ char **EditStudent(char **arr, int size)
 	cout << arr[num] << endl;
 	SetConsoleTextAttribute(h, 7);
 	cout << "Input new name with modification press (e) or (esc) for return menu: ";
+	cin.ignore();
+	SetConsoleTextAttribute(h, 10);
 	cin.getline(arr[num], nameLength);
+	SetConsoleTextAttribute(h, 7);
+	return arr;
 
 	//while (true)
 	//{
@@ -216,7 +219,6 @@ char **EditStudent(char **arr, int size)
 	//		cin.getline(arr[num], nameLength);
 	//	}
 	//}
-	return arr;
 }
 
 void FindStudent(char **arr, int size)
