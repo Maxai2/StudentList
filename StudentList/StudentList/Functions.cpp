@@ -188,37 +188,34 @@ char **EditStudent(char **arr, int size)
 	cin >> num;
 	num--;
 	SetConsoleTextAttribute(h, 7);
-	cleanRedaktPlace();
 	SetConsoleCursorPosition(h, { 0, 24 });
 	cout << "Old name: ";
 	SetConsoleTextAttribute(h, 10);
 	cout << arr[num] << endl;
 	SetConsoleTextAttribute(h, 7);
-	cout << "Input new name with modification press (e) or (esc) for return menu: ";
+	cout << "Input new name with modification press (e) or (esc) for return menu";
 	cin.ignore();
-	SetConsoleTextAttribute(h, 10);
-	cin.getline(arr[num], nameLength);
-	SetConsoleTextAttribute(h, 7);
-	return arr;
 
-	//while (true)
-	//{
-	//	key = getch();
+	while (true)
+	{
+		key = getch();
 
-	//	if (key == 27) // esc
-	//		return arr;
-	//	else if (key == 101) // e
-	//	{
-	//		cleanRedaktPlace();
-	//		SetConsoleCursorPosition(h, { 0, 24 });
-	//		cout << "Old name: ";
-	//		SetConsoleTextAttribute(h, 10);
-	//		cout << arr[num] << endl;
-	//		SetConsoleTextAttribute(h, 7);
-	//		cout << "Input new name : ";
-	//		cin.getline(arr[num], nameLength);
-	//	}
-	//}
+		if (key == 27) // esc
+			return arr;
+		else if (key == 101) // e
+		{
+			cleanRedaktPlace();
+			cout << "Old name: ";
+			SetConsoleTextAttribute(h, 10);
+			cout << arr[num] << endl;
+			SetConsoleTextAttribute(h, 7);
+			cout << "Input new name : ";
+			SetConsoleTextAttribute(h, 10);
+			cin.getline(arr[num], nameLength);
+			SetConsoleTextAttribute(h, 7);
+			return arr;
+		}
+	}
 }
 
 void FindStudent(char **arr, int size)
