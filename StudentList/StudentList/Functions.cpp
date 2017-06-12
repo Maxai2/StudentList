@@ -12,7 +12,7 @@ HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 
 void frame()
 {
-	int sLength = 0, fLength = 60, sWidth = 1, fWidth = 22;
+	int sLength = 0, fLength = 60, sWidth = 1, fWidth = 23;
 
 	for (short i = sWidth; i < fWidth; i++)
 	{
@@ -32,7 +32,7 @@ void frame()
 
 void clearTable()
 {
-	int sLength = 1, fLength = 59, sWidth = 2, fWidth = 21;
+	int sLength = 1, fLength = 59, sWidth = 2, fWidth = 22;
 
 	for (short i = sWidth; i < fWidth; i++)
 	{
@@ -95,9 +95,14 @@ void cleanRedaktPlace()
 
 char **AddStudents(char **arr, int &size)
 {
+//	int key = 0;
 	cin.ignore();
 	SetConsoleCursorPosition(h, { 0, 24 });
 	cout << "Input name(FirstN LastN FatherN): ";
+
+	//if ((key = getch()) == 13)
+	//	return arr;
+
 	SetConsoleTextAttribute(h, 10);
 	cin.getline(arr[size], nameLength);
 	SetConsoleTextAttribute(h, 7);
@@ -130,27 +135,22 @@ void Sort(char **arr, int size)
 		Print(arr, size);
 	else
 	{
-		for (int i = 0; i < size; i++)
+		for (int i = size - 1; i > 0; i--)
 		{
-			for (int j = 0; arr[i + 1][j] != '\0'; j++)
+			for (int j = 0; arr[i][j] != '\0'; j++)
 			{
-				if (arr[i][j] > arr[i + 1][j])
+				if (arr[i][j] < arr[i - 1][j])
 				{
-					temp = arr[i + 1];
-					arr[i + 1] = arr[i];
+					temp = arr[i - 1];
+					arr[i - 1] = arr[i];
 					arr[i] = temp;
-					i = size;
 					break;
 				}
-				else if (arr[i][j] < arr[i + 1][j])
-				{
-					i = size;
+				else if (arr[i][j] > arr[i - 1][j])
 					break;
-				}
-				
 			}
 		}
-				
+
 		Print(arr, size);
 	}
 }
@@ -242,7 +242,7 @@ void FindStudent(char **arr, int size)
 						check = false;
 				}
 				if (check)
-				{ 
+				{
 					SetConsoleCursorPosition(h, { 0, row });
 					cout << arr[i];
 					row++;
