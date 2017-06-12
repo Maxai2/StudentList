@@ -165,22 +165,19 @@ char **RemoveStudent(char **arr, int &size)
 	cin >> num;
 	SetConsoleTextAttribute(h, 7);
 	num--;
+
 	while (true)
 	{
-		if (num == size - 1)
-		{
-//			arr[num] = "";
+		if (num == size - 1 || size == 1)
 			break;
-		}
-		else
-		{
-			temp = arr[num];
-			arr[num] = arr[num + 1];
-			arr[num + 1] = temp;
-			num++;
-		}
+
+		temp = arr[num];
+		arr[num] = arr[num + 1];
+		arr[num + 1] = temp;
+		num++;
 	}
 	size--;
+	delete[] arr[size];
 	return arr;
 }
 
@@ -230,7 +227,6 @@ void FindStudent(char **arr, int size)
 	char *temp = new char[nameLength];
 	bool check = true;
 	short row = 25;
-//	int tempIndex = 0;
 	SetConsoleCursorPosition(h, { 0, 24 });
 	cout << "Enter the name or part of name: ";
 	cin.getline(temp, nameLength);
