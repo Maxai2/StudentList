@@ -95,6 +95,7 @@ void cleanRedaktPlace()
 
 char **AddStudents(char **arr, int &size)
 {
+	cin.ignore();
 	SetConsoleCursorPosition(h, { 0, 24 });
 	cout << "Input name(FirstN LastN FatherN): ";
 	SetConsoleTextAttribute(h, 10);
@@ -166,14 +167,18 @@ char **RemoveStudent(char **arr, int &size)
 	num--;
 	while (true)
 	{
-		temp = arr[num];
-		arr[num] = arr[num + 1];
-		arr[num + 1] = temp;
-		
 		if (num == size - 1)
+		{
+//			arr[num] = "";
 			break;
+		}
 		else
+		{
+			temp = arr[num];
+			arr[num] = arr[num + 1];
+			arr[num + 1] = temp;
 			num++;
+		}
 	}
 	size--;
 	return arr;
@@ -188,6 +193,7 @@ char **EditStudent(char **arr, int size)
 	cin >> num;
 	num--;
 	SetConsoleTextAttribute(h, 7);
+	cleanRedaktPlace();
 	SetConsoleCursorPosition(h, { 0, 24 });
 	cout << "Old name: ";
 	SetConsoleTextAttribute(h, 10);
@@ -205,6 +211,7 @@ char **EditStudent(char **arr, int size)
 		else if (key == 101) // e
 		{
 			cleanRedaktPlace();
+			SetConsoleCursorPosition(h, { 0, 24 });
 			cout << "Old name: ";
 			SetConsoleTextAttribute(h, 10);
 			cout << arr[num] << endl;
@@ -273,7 +280,7 @@ void menu(char **list, int size)
 			SetConsoleTextAttribute(h, defaultColor);
 
 			key = getch();
-			if (key == 0)
+			if (key == 224)
 				key = getch();
 
 			if (key == 72 && sel == 1) // Up
@@ -332,7 +339,7 @@ void menu(char **list, int size)
 			SetConsoleTextAttribute(h, defaultColor);
 
 			key = getch();
-			if (key == 0)
+			if (key == 224)
 				key = getch();
 
 			if (key == 72 && 0 < sel) // Up
